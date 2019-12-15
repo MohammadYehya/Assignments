@@ -1,0 +1,37 @@
+Module Module1
+
+    Sub Main()
+        'INPUT a phrase as STRING. Initiallize array "Alphabets" to zero. Reada phrase string one character at a time.
+        'Go to respective array position or index i.e a = 1 , b = 2 , c = 3 , etc.
+        'Count the character. Update array location. Output all characters in alphabetic letter's form which found more than zero times.
+        'Output the count . All letters are case insensitive.
+        Dim text As String
+        Dim Alphabets(26) As Integer
+        Dim doagain As Boolean = True
+        While doagain = True
+            For k = 1 To 26
+                Alphabets(k) = 0
+            Next
+
+            Console.WriteLine("Enter Text")
+            text = Console.ReadLine
+            text = UCase(text)
+            For k = 1 To 26
+                For c = 1 To Len(text)
+                    If Asc(Mid(text, c, Len(text))) = 64 + k Then
+                        Alphabets(k) = Alphabets(k) + 1
+                    End If
+                Next
+            Next
+
+            For k = 1 To 26
+                If Alphabets(k) > 0 Then
+                    Console.WriteLine("Number of times the letter " & Chr(k + 64) & " was used is :" & Alphabets(k))
+                End If
+            Next
+            Console.WriteLine("Do you want to try again?(TRUE/FALSE)")
+            doagain = Console.ReadLine
+        End While
+    End Sub
+
+End Module
